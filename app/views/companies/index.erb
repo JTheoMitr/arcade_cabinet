@@ -1,5 +1,9 @@
+
+
 <h1> All Companies </h1>
 
 <ul> <% @companies.each do |company| %>
-    <li> <%= company.name %> </li>
+    <li><a href="/companies/<%=company.id%>" style="text-decoration: none"><%= company.name %> </li>
     <% end %> </ul>
+
+    <a href="/companies/new" style="text-decoration: none"><h3> Add New Company </h3></a>

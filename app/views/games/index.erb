@@ -1,5 +1,11 @@
+<div style="text-align: center">
+
 <h1> All Games </h1>
 
 <ul> <% @games.each do |game| %>
-    <li> <%= game.name %> </li>
+    <li><a href="/games/<%=game.id%>" style="text-decoration: none"> <%= game.name %> </li>
     <% end %> </ul>
+
+    <a href="/games/new" style="text-decoration: none"><h3> Add New Game </h3></a>
+
+    </div>
