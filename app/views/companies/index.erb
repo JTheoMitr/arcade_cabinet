@@ -1,16 +1,20 @@
-<div style="text-align: center">
 
 <h1> All Companies </h1>
 
+    <br></br>
+
 <ul> <% @companies.each do |company| %>
-    <li><a href="/companies/<%=company.id%>" style="text-decoration: none"><%= company.name %> </li>
-    <% end %> </ul>
+    <li><p><a href="/companies/<%=company.id%>" style="text-decoration: none"><%= company.name %></p></li>
+<% end %> </ul>
 
-    <a href="/companies/new" style="text-decoration: none"><h3> Add New Company </h3></a>
+<a href="/companies/new" style="text-decoration: none"><h3> Add New Company </h3></a>
 
-    <form method="post" action="/companies">
-    <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Warning: Will Delete All Company Records">
-    </form>
+<a href="/games" style="text-decoration: none"><h3> View All Games </h3></a>
 
-    </div>
+    <br></br>
+
+<form method="post" action="/companies">
+<input id="hidden" type="hidden" name="_method" value="DELETE">
+<input type="submit" value="DELETE ALL COMPANY RECORDS">
+</form>
+  

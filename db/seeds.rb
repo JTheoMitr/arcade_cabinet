@@ -1,4 +1,5 @@
 Company.destroy_all
+Game.destroy_all
 
 
 nintendo = Company.create(name: "Nintendo", location: "Kyoto, Japan", age: 131, founded: 1889)

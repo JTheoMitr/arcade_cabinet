@@ -1,11 +1,11 @@
-<div style="text-align: center">
 
 <h1> All Games </h1>
 
+    <br></br>
+
 <ul> <% @games.each do |game| %>
-    <li><a href="/games/<%=game.id%>" style="text-decoration: none"> <%= game.name %> </li>
-    <% end %> </ul>
+    <li><p><a href="/games/<%=game.id%>" style="text-decoration: none"> <%= game.name %></p> </li>
+<% end %> </ul>
 
-    <a href="/games/new" style="text-decoration: none"><h3> Add New Game </h3></a>
-
-    </div>
+<a href="/companies" style="text-decoration: none"><h3> View All Companies </h3></a>
+   
