@@ -1,13 +1,20 @@
-<div style="text-align: center">
 
-<h1> Found that Company: </h1>
+    <h1> Found that Company: </h1>
 
-<h2>Name: <%= @company.name %></h2>
-<h2>Location: <%= @company.location %></h2>
-<h2>Founded: <%= @company.founded %></h2>
+    <h2>Name: <%= @company.name %></h2>
+    <h2>Location: <%= @company.location %></h2>
+    <h2>Founded: <%= @company.founded %></h2>
 
-<a href="/companies/<%=@company.id%>/edit"><h2>Edit This Company</h2></a>
-<a href="/companies"><h2>Full List of Companies</h2></a>
+    <h2>GAMES:</h2>
+    <ul>
+    <% @company.games.each do |game| %>
+        <li><h3><%= game.name %></h3></li>
+        <% end %>
 
+    <a href="/companies/<%=@company.id%>/edit"><h2>Edit This Company</h2></a>
+    <a href="/companies"><h2>Full List of Companies</h2></a>
 
-    </div>
+    <form method="post" action="/companies/<%=@company.id%>">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete This Company">
+    </form>

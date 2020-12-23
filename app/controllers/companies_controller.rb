@@ -31,12 +31,28 @@ class CompaniesController < ApplicationController
       erb :"companies/edit"
     end
 
+    get '/companies/:id/newgame' do
+      @company = Company.find_by(id: params[:id])
+      erb :"games/new"
+    end
+
     patch '/companies/:id' do
       @company = Company.find_by(id: params[:id])
       attrs = params[:company]
       @company.update(attrs)
       redirect to "/companies/#{@company.id}"
     end
+
+    delete '/companies/:id' do
+      id = params[:id]
+      Company.destroy(id)
+      redirect to '/companies'
+      end
+
+      delete '/companies' do
+        Company.delete_all
+        redirect to '/companies'
+        end
 
    
 
