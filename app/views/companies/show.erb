@@ -8,8 +8,8 @@
     <h2>GAMES:</h2>
     <ul>
     <% @company.games.each do |game| %>
-        <li><h3><%= game.name %></h3></li>
-        <% end %>
+        <li><a href="/games/<%=game.id%>" style="text-decoration: none"> <%= game.name %> </li>
+    <% end %> </ul>
 
     <a href="/companies/<%=@company.id%>/edit"><h2>Edit This Company</h2></a>
     <a href="/companies"><h2>Full List of Companies</h2></a>
