@@ -2,7 +2,7 @@
     <label for="games">
     Name: <input type="text" name="name">
     Release Year: <input type="integer" name="release_year">
-    <input type="integer" name="company_id" value="<%=@company.id%>" readonly>
+    <input type="hidden" name="company_id" value="<%=@company.id%>" readonly>
   <br></br>
     <input type="submit" value="submit">
 </form> 
