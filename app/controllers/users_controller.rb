@@ -5,7 +5,24 @@ class UsersController < ApplicationController
     end
 
     post "/signup" do
-        user = User.create(params[:user])
+
+        #if params[:user].values.any?{|value| value.blank? }
+        #if params[:user][:username] == "" || params[:user][:password] == ""
+        #redirect to "/signup"
+
+        user = User.new(params[:user])
+        if user.save
+            session[:user_id] = user.id
+            redirect to "/companies"
+        else    
+            @errors = user.errors.full_messages.join(" - ")
+            erb :"users/new"
+        end
+    end
+
+    get "/logout" do
+        session.clear
+        redirect to "/login"
     end
 
 

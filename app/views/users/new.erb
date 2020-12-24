@@ -1,7 +1,14 @@
 <h1> New User Sign Up </h1><br>
 
+<h3 style="color: red"><%= @errors %></h3>
+
+    <br></br>
+
 <form method="POST" action="/signup">
-    USERNAME: <input type="text" name="user[username]" required><br>
+    USERNAME: <input type="text" name="user[username]"><br></br>
     PASSWORD: <input type="password" name="user[password]"><br></br>
+
+    <br></br>
+
     <input type="submit" value="Sign Up">
 </form>

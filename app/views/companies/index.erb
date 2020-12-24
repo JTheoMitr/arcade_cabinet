@@ -17,4 +17,10 @@
 <input id="hidden" type="hidden" name="_method" value="DELETE">
 <input type="submit" value="DELETE ALL COMPANY RECORDS">
 </form>
+
+<br>
+        <% if logged_in? %>
+            <h3> You are logged in as: <%= current_user.username %></h3>
+            <a href="/logout">Log Out</a>
+        <% end %>
   
