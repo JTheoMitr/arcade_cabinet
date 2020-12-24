@@ -1,0 +1,14 @@
+<h1> Log In </h1><br>
+
+<h3 style="color: red"><%= @errors %></h3>
+
+    <br></br>
+
+<form method="POST" action="/login">
+    USERNAME: <input type="text" name="user[username]"require><br></br>
+    PASSWORD: <input type="password" name="user[password]"><br></br>
+
+    <br></br>
+
+    <input type="submit" value="Log In">
+</form>
