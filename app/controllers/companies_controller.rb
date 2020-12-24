@@ -6,10 +6,8 @@ class CompaniesController < ApplicationController
       end
 
       post '/companies' do
-        attrs = params
-        @company = Company.create(attrs)
-    
-        redirect to "/companies/#{@company.id}"
+        company = current_user.companies.create(params)
+        redirect to "/companies"
       end
 
       get "/companies" do
@@ -28,7 +26,11 @@ class CompaniesController < ApplicationController
 
     get '/companies/:id/edit' do
       @company = Company.find_by(id: params[:id])
-      erb :"companies/edit"
+      if @company.user == current_user
+        erb :"companies/edit"
+      else
+        redirect to "/companies"
+      end
     end
 
     get '/companies/:id/newgame' do
