@@ -5,6 +5,19 @@ class CompaniesController < ApplicationController
         erb :"companies/new"
       end
 
+      get "/companies/search" do
+        erb :"companies/search"
+      end
+
+      post '/companies/search' do
+        @company = Company.find_by(name: params[:name])
+        if @company
+          redirect to "/companies/#{@company.id}"
+        else
+          redirect to "/companies"
+        end
+      end
+
       post '/companies' do
         @company = Company.find_by(name: params[:name])
         if @company
