@@ -40,7 +40,7 @@ class CompaniesController < ApplicationController
 
       get '/companies/:id/newgame' do
         @company = Company.find_by(id: params[:id])
-        if @company.user == current_user
+        if !!session[:user_id] && @company.user == current_user
           erb :"games/new"
         else
           redirect to "/unauthorized"
@@ -62,12 +62,16 @@ class CompaniesController < ApplicationController
           else
             redirect to '/unauthorized'
           end
-        end
+      end
 
       delete '/companies' do
-        Company.delete_all
-        redirect to '/companies'
+        if !!session[:user_id] && current_user.username == "admin"
+          Company.delete_all
+          redirect to '/companies'
+        else 
+          redirect to '/unauthorized'
         end
+      end
 
    
 
