@@ -27,7 +27,12 @@ class GamesController < ApplicationController
 
     get '/games/:id/edit' do
       @game = Game.find_by(id: params[:id])
-      erb :"games/edit"
+      @company = @game.company
+        if @company.user == current_user
+          erb :"games/edit"
+        else
+          redirect to "/unauthorized"
+        end
     end
 
     patch '/games/:id' do
@@ -40,8 +45,13 @@ class GamesController < ApplicationController
     delete '/games/:id' do
       id = params[:id]
       @game = Game.find_by(id: id)
-      Game.destroy(id)
-      redirect to "/companies/#{@game.company_id}"
+      @company = @game.company
+        if @company.user == current_user
+          Game.destroy(id)
+          redirect to "/companies/#{@game.company_id}"
+        else
+          redirect to "/unauthorized"
+        end
       end
 
 end
