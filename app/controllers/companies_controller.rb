@@ -2,7 +2,11 @@ class CompaniesController < ApplicationController
 
 
       get "/companies/new" do
-        erb :"companies/new"
+        if !!session[:user_id]
+          erb :"companies/new"
+        else
+          erb :unauthorized
+        end
       end
 
       get "/companies/search" do
