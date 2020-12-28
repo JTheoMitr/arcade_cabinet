@@ -29,13 +29,17 @@ class CompaniesController < ApplicationController
       if @company.user == current_user
         erb :"companies/edit"
       else
-        redirect to "/companies"
+        redirect to "/unauthorized"
       end
     end
 
     get '/companies/:id/newgame' do
       @company = Company.find_by(id: params[:id])
-      erb :"games/new"
+      if @company.user == current_user
+        erb :"games/new"
+      else
+        redirect to "/unauthorized"
+      end
     end
 
     patch '/companies/:id' do
@@ -46,9 +50,13 @@ class CompaniesController < ApplicationController
     end
 
     delete '/companies/:id' do
-      id = params[:id]
-      Company.destroy(id)
-      redirect to '/companies'
+      @company = Company.find_by(id: params[:id])
+      if @company.user == current_user
+        Company.destroy(id)
+        redirect to '/companies'
+      else
+        redirect to '/unauthorized'
+       end
       end
 
       delete '/companies' do

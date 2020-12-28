@@ -8,4 +8,8 @@
 <% end %> </ul>
 
 <a href="/companies" style="text-decoration: none"><h3> View All Companies </h3></a>
-   
+<br>
+<% if logged_in? %>
+    <h3> You are logged in as: <%= current_user.username %></h3>
+    <a href="/logout">Log Out</a>
+<% end %>

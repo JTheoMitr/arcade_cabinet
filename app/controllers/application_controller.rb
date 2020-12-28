@@ -10,7 +10,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    erb :arcade
+  end
+
+  get "/unauthorized" do
+    erb :unauthorized
   end
 
   helpers do
@@ -28,7 +32,7 @@ class ApplicationController < Sinatra::Base
       # end
 
       @current_user ||= User.find_by(id: session[:user_id])
-      
+
     end
 
   end
