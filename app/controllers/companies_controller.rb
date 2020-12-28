@@ -56,8 +56,8 @@ class CompaniesController < ApplicationController
 
       delete '/companies/:id' do
         @company = Company.find_by(id: params[:id])
-          if @company.user == current_user
-            Company.destroy(id)
+          if !!session[:user_id] && @company.user == current_user
+            Company.destroy(params[:id])
             redirect to '/companies'
           else
             redirect to '/unauthorized'
