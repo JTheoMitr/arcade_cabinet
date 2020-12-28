@@ -31,7 +31,7 @@ class CompaniesController < ApplicationController
 
       get '/companies/:id/edit' do
         @company = Company.find_by(id: params[:id])
-        if @company.user == current_user
+        if !!session[:user_id] && (@company.user == current_user || current_user.username == "admin")
           erb :"companies/edit"
         else
           redirect to "/unauthorized"
@@ -40,7 +40,7 @@ class CompaniesController < ApplicationController
 
       get '/companies/:id/newgame' do
         @company = Company.find_by(id: params[:id])
-        if !!session[:user_id] && @company.user == current_user
+        if !!session[:user_id] && (@company.user == current_user || current_user.username == "admin")
           erb :"games/new"
         else
           redirect to "/unauthorized"
@@ -56,7 +56,7 @@ class CompaniesController < ApplicationController
 
       delete '/companies/:id' do
         @company = Company.find_by(id: params[:id])
-          if !!session[:user_id] && @company.user == current_user
+          if !!session[:user_id] && (@company.user == current_user || current_user.username == "admin")
             Company.destroy(params[:id])
             redirect to '/companies'
           else
