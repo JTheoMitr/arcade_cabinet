@@ -28,7 +28,7 @@ class GamesController < ApplicationController
     get '/games/:id/edit' do
       @game = Game.find_by(id: params[:id])
       @company = @game.company
-        if @company.user == current_user
+        if !!session[:user_id] && (@company.user == current_user || current_user.username == "admin")
           erb :"games/edit"
         else
           redirect to "/unauthorized"
@@ -46,7 +46,7 @@ class GamesController < ApplicationController
       id = params[:id]
       @game = Game.find_by(id: id)
       @company = @game.company
-        if @company.user == current_user
+        if !!session[:user_id] && (@company.user == current_user || current_user.username == "admin")
           Game.destroy(id)
           redirect to "/companies/#{@game.company_id}"
         else
