@@ -9,3 +9,4 @@ run ApplicationController
 use CompaniesController
 use GamesController
 use UsersController
+use SessionsController

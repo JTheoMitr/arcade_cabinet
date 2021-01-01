@@ -13,7 +13,7 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightseagreen;
+    background-image: url(../images/woodgrain_bgnd_1.jpeg);
     color: rgb(31, 197, 45);
     font-family: Sans-Serif;
     line-height: 18px;
@@ -29,6 +29,10 @@
     padding: 2.25%; /* 18px / 800px */
     width: 85%;
     text-align: center;
+    border: 10px;
+    border-style: solid;
+    border-color: grey;
+    border-radius: 20px;
   }
 
   h1 {
