@@ -25,6 +25,8 @@ shotgun
 
 once shotgun is running, you can navigate to the dedicated port (http://localhost:9393/) and follow the on-screen prompts and links to use the application.
 
+Remember to exit shotgun in your terminal (ctrl + c) before closing out your development environment!
+
 User Info
 ------------
 

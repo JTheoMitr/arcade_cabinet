@@ -1,10 +1,10 @@
 <form action="/companies/<%=@company.id%>" method="POST" autocomplete="on">
     <input id="hidden" type="hidden" name="_method" value = "PATCH">
     <label for="companies">
-    <%=@company.name%> <input id="name" type="text" value="<%=@company.name%>" name="company[name]">
-    <%=@company.location%> <input id="location" type="text" value=<%=@company.location%> name="company[location]">
-    <%=@company.age%> <input id="age" type="integer" value="<%=@company.age%>" name="company[age]">
-    <%=@company.founded%> <input id="founded" type="integer" value="<%=@company.founded%>" name="company[founded]">
+    <%=@company.name%> <input id="name" type="text" value="<%=@company.name%>" name="company[name]"><br></br>
+    <%=@company.location%> <input id="location" type="text" value="<%=@company.location%>" name="company[location]"><br></br>
+    <%=@company.age%> <input id="age" type="integer" value="<%=@company.age%>" name="company[age]"><br></br>
+    <%=@company.founded%> <input id="founded" type="integer" value="<%=@company.founded%>" name="company[founded]"><br></br>
   <br></br>
     <input type="submit" value="submit">
     <a href="/companies"><h2>Back to Company List</h2></a>
